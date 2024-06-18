@@ -1,0 +1,26 @@
+<div>
+  <div>
+  <h2>Введите имя пользователя</h2>
+  <h3>Имя: {{newUser.name}}</h3>
+  <input type="text" [ngModel]="newUser.name" #name="ngModel" required /> 
+   <div [hidden]="name.valid || name.untouched">
+    <small [class.small-alert]="true" >Имя пользователя обязательно</small>
+  </div>
+  </div>
+  <div>
+    <h2>Введите возраст пользователя</h2>
+    <h3>Возраст: {{newUser.age}}</h3>
+    <input type="text" [ngModel]="newUser.age" #age="ngModel" required /> 
+    <div [hidden]="age.valid || age.untouched">
+      <small [class.small-alert]="true" >Возраст пользователя обязательно</small>
+    </div>
+  </div>
+  <button [disabled]="name.invalid || age.invalid" (click)="addUser()">Добавить пользователя</button>
+  <div>
+    <h2>Список пользователей</h2>
+    <div *ngFor="let user of users">
+      <p>{{user.name}}</p>
+      <p>{{user.age}}</p>
+    </div>
+  </div>
+</div>
